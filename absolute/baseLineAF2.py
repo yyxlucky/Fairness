@@ -172,6 +172,16 @@ if __name__ == "__main__":
     timeTotal = time4-time3 + time2-time1
     print("time:", timeTotal)
 
+    outFile = input("请输入写出结果的文件路径：")
+    # outFile = '/Users/yxyang/Desktop/rs.txt'
+    # C:\yyx\SCH\fourthSeme\fairness\Data\data20190223\710friend_large.txt
+    with open(outFile, 'w') as fi:
+        fi.write("time:" + str(timeTotal) + "\n")
+        # fi.write("存在的absoluteFairnessCliques有：" + str(RsNum) + "个" + "\n")
+        for i in result:
+            # print(i.getL(), i.getR())
+            fi.write(str(i) + "\n")
+
 
 
 

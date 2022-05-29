@@ -15,8 +15,6 @@ def Fairness(allCliques, nodeAttrDic, nodeAttrDicTemp):
     # nodeAttr = []
 
 
-
-
     for i in allCliques:
         NumberofAttribute = nodeAttrDicTemp.copy()
         # print(NumberofAttribute)
@@ -119,7 +117,7 @@ def Fair():
                 nodeAttr[iT] = 0
         nodeAttrDic[key] = nodeKey
         nodeAttrDicTemp[key] = 0
-    print("属性字典为", nodeAttrDic)
+    # print("属性字典为", nodeAttrDic)
 
     time1 = dt.datetime.now()
 
@@ -143,7 +141,7 @@ def Fair():
         for j in result:
             if j != []:
                 allCliques.append(j)
-    print(allCliques)
+    # print(allCliques)
     '''
     for i in ec:
         # print("---ec:", i.getL(), i.getR())
@@ -237,14 +235,23 @@ def Fair():
     '''
 
     result = Fairness(allCliques, nodeAttrDic, nodeAttrDicTemp)
-    print("存在的absoluteFair有：", result)
-    print(len(result), "个")
+    # print("存在的absoluteFair有：", result)
+    print("存在的absoluteFair有：", len(result), "个")
 
     time2 = dt.datetime.now()
     timeTotal = time2 - time1
     print("time:", timeTotal)
+    RsNum = len(result)
 
-
+    outFile = input("请输入写出结果的文件路径：")
+    # outFile = '/Users/yxyang/Desktop/rs.txt'
+    # C:\yyx\SCH\fourthSeme\fairness\Data\data20190223\710friend_large.txt
+    with open(outFile, 'w') as fi:
+        fi.write("time:" + str(timeTotal) + "\n")
+        # fi.write("存在的absoluteFairnessCliques有：" + str(RsNum) + "个" + "\n")
+        for i in result:
+            # print(i.getL(), i.getR())
+            fi.write(str(i) + "\n")
 
 Fair()
 
